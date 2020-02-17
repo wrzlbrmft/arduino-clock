@@ -4,6 +4,7 @@
 
 unsigned int clock_delay = DEFAULT_CLOCK_DELAY;
 bool CLOCK = false;
+bool CLOCK_RUN = true;
 
 void setup() {
   // put your setup code here, to run once:
@@ -33,10 +34,22 @@ void loop() {
         clock_delay = DEFAULT_CLOCK_DELAY;
         Serial.println(clock_delay);
         break;
+
+      case 'c':
+        // toggle clock auto-run
+        CLOCK_RUN = !CLOCK_RUN;
+        Serial.println(CLOCK_RUN);
+        break;
     }
   }
+
   digitalWrite(PIN_CLOCK, CLOCK ? HIGH : LOW);
   delay(clock_delay);
 
-  CLOCK = !CLOCK;
+  if (CLOCK) {
+    CLOCK = false;
+  }
+  else if (CLOCK_RUN) {
+    CLOCK = true;
+  }
 }
