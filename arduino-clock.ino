@@ -27,6 +27,12 @@ void loop() {
         clock_delay *= 1.1;
         Serial.println(clock_delay);
         break;
+
+      case 'C':
+        // reset clock speed
+        clock_delay = DEFAULT_CLOCK_DELAY;
+        Serial.println(clock_delay);
+        break;
     }
   }
   digitalWrite(PIN_CLOCK, CLOCK ? HIGH : LOW);
