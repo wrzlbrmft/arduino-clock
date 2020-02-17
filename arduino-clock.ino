@@ -40,6 +40,14 @@ void loop() {
         CLOCK_RUN = !CLOCK_RUN;
         Serial.println(CLOCK_RUN);
         break;
+
+      case '#':
+        // single clock pulse
+        if (!CLOCK_RUN) {
+          CLOCK = true;
+          Serial.println("CLOCK");
+        }
+        break;
     }
   }
 
